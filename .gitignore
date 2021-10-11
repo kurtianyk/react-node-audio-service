@@ -3,3 +3,4 @@ package-lock.json
 service-account.json
 firebase.config.js
 .env
+.DS_Store
