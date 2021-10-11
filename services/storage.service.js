@@ -12,7 +12,7 @@ async function upload(files, url) {
     const file = files.file;
     return new Promise((resolve, reject) => {
       const storage = firebase.storage();
-      const bucket = storage.bucket('gs://audio-player-e9b3d.appspot.com');
+      const bucket = storage.bucket(process.env.GOOGLE_FIREBASE_BUCKET);
 
       const fileInfo = path.parse(file.name.replace(' ', '-'));
       const filename = `${fileInfo.name}_${moment().unix()}${fileInfo.ext}`;

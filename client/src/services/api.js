@@ -25,19 +25,8 @@ const setToken = () => {
 const signInUser = (email, password) => api.post(`/api/v1/auth/signin`, { email, password });
 const signUpUser = (name, email, password) => api.post(`/api/v1/auth/signup`, { name, email, password });
 
-const uploadFile = (name, email, password) => api.post(`/api/v1/audio/upload`, { name, email, password });
-
-const getAllVouchers = () => api.get('/api/v1/voucher-management/all');
-const addVoucher = (body) => api.post(`/api/v1/voucher-management/add`, body);
-const editVoucher = (body) => api.put(`/api/v1/voucher-management/update`, body);
-const deleteVoucher = (id) => api.delete(`/api/v1/voucher-management/delete/${id}`);
-
 export default {
     signInUser,
     signUpUser,
-    addVoucher,
-    editVoucher,
-    deleteVoucher,
-    getAllVouchers,
     setToken
 };

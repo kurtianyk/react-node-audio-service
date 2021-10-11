@@ -74,22 +74,6 @@ export const ModalForm = (props) => {
 
   const handleChange = (prop) => (event) => {
     setValues({ ...values, [prop]: event.target.value });
-
-    if (["business_name", "business_address", "offer_description"].includes(prop) && event.target.value.length > 256) {
-      setErrors({ ...errors, [prop]: "The maximum length is 256ch" });
-    } else {
-      setErrors({ ...errors, [prop]: null });
-    }
-
-    if (prop === "days_to_use") {
-      if (Number(event.target.value) > 31) {
-        setErrors({ ...errors, [prop]: "The maximum duration is 31 days" });
-      }
-
-      if (isNaN(Number(event.target.value))) {
-        setErrors({ ...errors, [prop]: "Days to use should be number" });
-      }
-    }
   };
 
   const handleSave = () => {

@@ -10,7 +10,6 @@ async function uploadAudio(req, res) {
   try {
     // const {
     // } = req.body;
-    console.log(req.files, 'file')
 
     const audioSrc = await storageService.upload(req.files);
     console.log(audioSrc, 'audioSrc')
@@ -23,7 +22,7 @@ async function uploadAudio(req, res) {
     // const savedNewAudio = await db.collection("audio_files").add(newAudio);
     // const audioData = await db
     //   .collection("audio_files")
-    //   .doc(savedNewVoucher.id)
+    //   .doc(savedNewAudio.id)
     //   .get();
 
     res.status(200).json({ audioSrc: audioSrc });

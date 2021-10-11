@@ -105,7 +105,7 @@ export const Dashboard = (props) => {
         values: selectedRow,
         type: "confirm",
         callback: () => {
-          api.deleteVoucher(id);
+          api.deleteAudio(id);
           notifySuccess('Your audio track was deleted!');
           setRows(rows.filter(r => r.id !== id));
           handleClose();
@@ -120,12 +120,12 @@ export const Dashboard = (props) => {
         values: selectedRow,
         callback: async (values) => {
           try {
-            const { data, ok, status } = await api.editVoucher({ id, ...values });
+            const { data, ok, status } = await api.editAudio({ id, ...values });
 
             if (ok, status === 200) {
               handleClose();
               setRows([ ...rows.filter(r => r.id !== id), data ]);
-              return notifySuccess('Your voucher was edited!');
+              return notifySuccess('Your trackF was edited!');
             }
           } catch(e) {
             return notifyError();
@@ -206,14 +206,14 @@ export const Dashboard = (props) => {
   ];
 
   useEffect(() => {
-    fetch();
+    // fetch();
   }, []);
 
   const fetch = async () => {
     api.setToken();
     try {
       setLoading(true);
-      const response = await api.getAllVouchers();
+      const response = await api.getAllTracks();
       if (response.ok && response.status === 200) {
         setRows(response.data);
         setLoading(false);
@@ -239,7 +239,7 @@ export const Dashboard = (props) => {
       values: null,
       callback: async (values) => {
         try {
-          const { data, ok, status } = await api.addVoucher(values);
+          const { data, ok, status } = await api.addAudio(values);
 
           if (ok, status === 200) {
             handleUpdateRows(data);
@@ -277,7 +277,7 @@ export const Dashboard = (props) => {
   const gridContent = loading
     ? <div className={classes.loaderContainer} style={{ display: "flex", justifyContent: "center", padding: "28vh 0" }}><CircularProgress size="10rem" color="primary" /></div>
     : <MUIDataTable
-        //title={"Vouchers"}
+        //title={"Audio Track"}
         className={classes.grid}
         isRowSelectable={false}
         data={rows}
